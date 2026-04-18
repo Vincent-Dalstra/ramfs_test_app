@@ -1,0 +1,3 @@
+[submodule "dev_managed_components/ramfs"]
+	path = dev_managed_components/ramfs
+	url = git@github.com:Escape-This/ramfs.git

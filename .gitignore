@@ -1,0 +1,45 @@
+.DS_Store
+build/
+
+# ESP-IDE artifacts (code editor settings, I think)
+.clangd
+.clang-format
+
+# ESP-IDF artifacts
+dependencies.lock
+
+# Dependencies managed by esp-idf
+managed_components/
+
+# Not sure, but seems to be options for eclipse workspace
+.cproject
+
+# I believe this is generated when you import the project. Includes absolute paths (i.e. OS and user dependent)
+.project
+
+
+# Important: The reccomended way is to NOT save sdkconfig (which is generated in random order!)
+# Instead, save the 'defaults' using 'idf.py save-defconfig' - this tracks much better in git).
+sdkconfig
+sdkconfig.old
+!sdkconfig.defaults
+sdkconfig.defaults.old
+
+
+# Ignore doxygen output, but not the config for doxygen
+doxygen/
+!doxygen/doxyfile
+!doxygen/Doxyfile
+
+# Ignore generated .dot graphs
+*.dot
+
+# Vim leaves a swap file if it closes unexpectedly
+*.swp
+
+
+# Don't want to save compressed archives, if they appear somehow
+*.zip
+*.tar
+*.gz
+*.xz

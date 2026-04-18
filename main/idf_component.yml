@@ -1,0 +1,12 @@
+## IDF Component Manager Manifest File
+dependencies:
+  ## Required IDF version
+  idf:
+    version: '>=5.4.*'
+
+  #jkent/ramfs: '*'
+    #version: ~0.2.0
+  ramfs:
+    #git: git@github.com:Escape-This/ramfs.git
+    override_path:
+      ../dev_managed_components/ramfs
