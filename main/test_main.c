@@ -16,7 +16,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#include <esp_log.h>        // Set log level
+#include "esp_log.h"
+#include "esp_err.h"
+#include "esp_check.h"
 
 __attribute__((unused))
 static const char* TAG = "app_main";
@@ -38,7 +40,7 @@ void app_main(void)
     xTaskCreate(&unity_main_task, "unity", UNITY_TASK_STACKMEM, NULL, 10, &unity_main_task_handle);
 
     vTaskDelete(NULL);      // Delete this task (main task)
-    return;
+    __unreachable();
 }
 
 void unity_main_task(void *pvParameter)
@@ -94,10 +96,6 @@ void unity_main_task(void *pvParameter)
     vTaskDelay(2000 / portTICK_PERIOD_MS);
 
     esp_log_level_set("*", ESP_LOG_DEBUG);
-
-    // These produce a lot of LOGD when setting up the emmc card
-    esp_log_level_set("vfs_fat", ESP_LOG_INFO);
-    esp_log_level_set("sdmmc_mmc", ESP_LOG_INFO);
 
     print_banner("Running tests currently in development");
     UNITY_BEGIN();
