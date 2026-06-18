@@ -40,7 +40,7 @@ void app_main(void)
     xTaskCreate(&unity_main_task, "unity", UNITY_TASK_STACKMEM, NULL, 10, &unity_main_task_handle);
 
     vTaskDelete(NULL);      // Delete this task (main task)
-    __unreachable();
+    __builtin_unreachable();
 }
 
 void unity_main_task(void *pvParameter)
